@@ -2,12 +2,27 @@
   <div>
     Perfect height: <input [(ngModel)]="_perfectHeight"/>
   </div>
-  <ngx-photo-gallery-mosaic
-    [pictures]="pictures"
-    [realWidthGetter]="widthGetterFn"
-    [realHeightGetter]="heightGetterFn"
-    [spaceBetween]="5"
-    [perfectHeight]="perfectHeight"
-    [lowSizePreviewGetter]="lowSizePreviewGetter">
-  </ngx-photo-gallery-mosaic>
+  <div>
+    Gallery 1
+    <ngx-photo-gallery-mosaic
+      [pictures]="pictures"
+      [realWidthGetter]="widthGetterFn"
+      [realHeightGetter]="heightGetterFn"
+      [spaceBetween]="5"
+      [perfectHeight]="perfectHeight"
+      [lowSizePreviewGetter]="lowSizePreviewGetter">
+    </ngx-photo-gallery-mosaic>
+  </div>
+
+  <div>
+    Gallery 2
+    <ngx-photo-gallery-mosaic
+      [pictures]="pictures"
+      [realWidthGetter]="widthGetterFn"
+      [realHeightGetter]="heightGetterFn"
+      [spaceBetween]="5"
+      [perfectHeight]="perfectHeight"
+      [lowSizePreviewGetter]="lowSizePreviewGetter">
+    </ngx-photo-gallery-mosaic>
+  </div>
 </div>

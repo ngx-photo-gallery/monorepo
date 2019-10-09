@@ -80,6 +80,9 @@ export class MosaicComponent implements OnInit, OnChanges {
   @HostListener('window:resize', ['$event'])
   private recalculateGallery() {
     this.rows = generateLayout(this.pictures, this.layoutConfig);
+    const heights = this.rows.map((row) => row[0].height);
+    const totalHeight = heights.reduce((acc, h) => acc + h, 0) + this.rows.length * this.spaceBetween;
+    this.el.nativeElement.style.height = totalHeight + 'px';
   }
 
   getStyleForPicture(picutre: any) {
