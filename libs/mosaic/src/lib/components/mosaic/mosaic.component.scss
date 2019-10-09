@@ -5,6 +5,11 @@
   .mosaic-preview {
     position: absolute;
     background-size: cover;
+
+
+    .mosaic-preview__content {
+      display: unset;
+    }
   }
 
   .mosaic-preview:hover {

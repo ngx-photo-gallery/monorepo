@@ -1,3 +1,11 @@
 <div *ngFor="let img of pictures" [ngStyle]="getStyleForPicture(img)" class="mosaic-preview">
-
+  <div
+    *ngIf="imageContent && imageContent.template"
+    class="mosaic-preview__content">
+    <ng-template
+      *ngIf="imageContent && imageContent.template"
+      [ngTemplateOutlet]="imageContent.template"
+      [ngTemplateOutletContext]="{item: img}">
+    </ng-template>
+  </div>
 </div>

@@ -1,6 +1,16 @@
-import { Component, ElementRef, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges, TemplateRef
+} from '@angular/core';
 import { generateLayout } from '../../utils/row-variator';
 import { LayoutConfig } from '../../types/layout-config';
+import { ImageContentDirective } from '../../directives/image-content.directive';
 
 @Component({
   selector: 'ngx-photo-gallery-mosaic',
@@ -8,6 +18,23 @@ import { LayoutConfig } from '../../types/layout-config';
   styleUrls: ['./mosaic.component.scss']
 })
 export class MosaicComponent implements OnInit, OnChanges {
+
+  @ContentChild(ImageContentDirective, { static: true })
+  imageContent: ImageContentDirective;
+
+  constructor(private el: ElementRef) {
+  }
+
+  private get layoutConfig(): LayoutConfig {
+    return {
+      width: this.width,
+      perfectHeight: this.perfectHeight,
+      spaceBetween: this.spaceBetween,
+      heightGetterFn: this.realHeightGetter,
+      widthGetterFn: this.realWidthGetter,
+      lowSizePreviewUrlGetterFn: this.lowSizePreviewGetter
+    };
+  }
 
   /**
    * List of rowImages for display
@@ -25,20 +52,6 @@ export class MosaicComponent implements OnInit, OnChanges {
   private rows;
   @Input()
   private perfectHeight = 300;
-
-  constructor(private el: ElementRef) {
-  }
-
-  private get layoutConfig(): LayoutConfig {
-    return {
-      width: this.width,
-      perfectHeight: this.perfectHeight,
-      spaceBetween: this.spaceBetween,
-      heightGetterFn: this.realHeightGetter,
-      widthGetterFn: this.realWidthGetter,
-      lowSizePreviewUrlGetterFn: this.lowSizePreviewGetter
-    };
-  }
 
   private get width(): number {
     return this.el.nativeElement.offsetWidth;
@@ -75,6 +88,7 @@ export class MosaicComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.recalculateGallery();
+    console.log(this.imageContent);
   }
 
   @HostListener('window:resize', ['$event'])

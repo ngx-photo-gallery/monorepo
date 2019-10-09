@@ -11,6 +11,14 @@
       [spaceBetween]="5"
       [perfectHeight]="perfectHeight"
       [lowSizePreviewGetter]="lowSizePreviewGetter">
+      <ngx-photo-gallery-image-content>
+        <ng-template ngxPhotoGalleryImageContentTemplate let-item="item">
+          <div class="additional-info">
+            <div>{{item.identifier}}</div>
+          </div>
+        </ng-template>
+      </ngx-photo-gallery-image-content>
+
     </ngx-photo-gallery-mosaic>
   </div>
 
