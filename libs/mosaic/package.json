@@ -1,6 +1,6 @@
 {
   "name": "@ngx-photo-gallery/mosaic",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://github.com/ngx-photo-gallery/monorepo",
   "private": false,
   "peerDependencies": {
