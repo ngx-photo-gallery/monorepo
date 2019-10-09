@@ -55,7 +55,7 @@ export class AppComponent {
       realHeight: 2929,
     },
     {
-      identifier: 7,
+      identifier: 'seven',
       fullSizePreview: '/assets/7_original.jpg',
       lowSizePreview: '/assets/7_preview.jpg',
       realWidth: 3919,
@@ -70,4 +70,8 @@ export class AppComponent {
   widthGetterFn = (image) => image.realWidth;
   heightGetterFn = (image) => image.realHeight;
   lowSizePreviewGetter = (image) => image.lowSizePreview;
+
+  handleClick(img: any) {
+    alert('clicked on ' +  img.identifier);
+  }
 }

@@ -1,4 +1,7 @@
-<div *ngFor="let img of pictures" [ngStyle]="getStyleForPicture(img)" class="mosaic-preview">
+<div *ngFor="let img of pictures"
+     [ngStyle]="getStyleForPicture(img)" class="mosaic-preview"
+     (click)="handleClick($event, img)"
+  >
   <div
     *ngIf="imageContent && imageContent.template"
     class="mosaic-preview__content">

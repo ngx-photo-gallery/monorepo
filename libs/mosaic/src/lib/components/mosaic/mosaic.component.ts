@@ -1,11 +1,11 @@
 import {
   Component,
   ContentChild,
-  ElementRef,
+  ElementRef, EventEmitter,
   HostListener,
   Input,
   OnChanges,
-  OnInit,
+  OnInit, Output,
   SimpleChanges, TemplateRef
 } from '@angular/core';
 import { generateLayout } from '../../utils/row-variator';
@@ -18,9 +18,6 @@ import { ImageContentDirective } from '../../directives/image-content.directive'
   styleUrls: ['./mosaic.component.scss']
 })
 export class MosaicComponent implements OnInit, OnChanges {
-
-  @ContentChild(ImageContentDirective, { static: true })
-  imageContent: ImageContentDirective;
 
   constructor(private el: ElementRef) {
   }
@@ -35,6 +32,13 @@ export class MosaicComponent implements OnInit, OnChanges {
       lowSizePreviewUrlGetterFn: this.lowSizePreviewGetter
     };
   }
+
+  private get width(): number {
+    return this.el.nativeElement.offsetWidth;
+  }
+
+  @ContentChild(ImageContentDirective, { static: true })
+  imageContent: ImageContentDirective;
 
   /**
    * List of rowImages for display
@@ -53,9 +57,8 @@ export class MosaicComponent implements OnInit, OnChanges {
   @Input()
   private perfectHeight = 300;
 
-  private get width(): number {
-    return this.el.nativeElement.offsetWidth;
-  }
+  @Output()
+  click = new EventEmitter<any>();
 
   /**
    * Getter for image's real width. By default it simply gets 'width' property
@@ -88,7 +91,6 @@ export class MosaicComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.recalculateGallery();
-    console.log(this.imageContent);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -114,5 +116,10 @@ export class MosaicComponent implements OnInit, OnChanges {
       marginTop: marginTop + 'px',
       marginLeft: marginLeft + 'px'
     };
+  }
+
+  handleClick(event: MouseEvent, img: any) {
+    this.click.emit(img);
+    event.stopPropagation();
   }
 }

@@ -1,7 +1,4 @@
-# mosaic
+# Photo Gallery for Angular >8.0
 
-This library was generated with [Nx](https://nx.dev).
+![Gallery screenshot](./../../docs/screen1.jpg)
 
-## Running unit tests
-
-Run `nx test mosaic` to execute the unit tests.

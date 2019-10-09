@@ -10,7 +10,8 @@
       [realHeightGetter]="heightGetterFn"
       [spaceBetween]="5"
       [perfectHeight]="perfectHeight"
-      [lowSizePreviewGetter]="lowSizePreviewGetter">
+      [lowSizePreviewGetter]="lowSizePreviewGetter"
+      (click)="handleClick($event)">
       <ngx-photo-gallery-image-content>
         <ng-template ngxPhotoGalleryImageContentTemplate let-item="item">
           <div class="additional-info">
