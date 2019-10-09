@@ -6,55 +6,68 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
+  get perfectHeight() {
+    return Number.parseInt(this._perfectHeight, 10);
+  }
   pictures: any[] = [
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/panorama_(1).jpg?bwg=1570383416',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/panorama_(1).jpg?bwg=1570383416',
+      identifier: 1,
+      fullSizePreview: '/assets/1_original.jpg',
+      lowSizePreview: '/assets/1_preview.jpg',
       realWidth: 1920,
       realHeight: 547
     },
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/5_(1)_(1)_(1)_(1)_(1)_(1).jpg?bwg=1570381254',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/5_(1)_(1)_(1)_(1)_(1)_(1).jpg?bwg=1570381254',
+      identifier: 2,
+      fullSizePreview: '/assets/2_original.jpg',
+      lowSizePreview: '/assets/2_preview.jpg',
       realWidth: 3879,
       realHeight: 2866
     },
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/5_(1)_(1)_(1)_(1)_(1).jpg?bwg=1569863881',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/5_(1)_(1)_(1)_(1)_(1).jpg?bwg=1569863881',
+      identifier: 3,
+      fullSizePreview: '/assets/3_original.jpg',
+      lowSizePreview: '/assets/3_preview.jpg',
       realWidth: 3941,
       realHeight: 2975
     },
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/affinity.jpg?bwg=1567868280',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/affinity.jpg?bwg=1567868280',
+      identifier: 4,
+      fullSizePreview: '/assets/4_original.jpg',
+      lowSizePreview: '/assets/4_preview.jpg',
       realWidth: 7648,
       realHeight: 2214
     },
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/13.jpg?bwg=1567359413',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/13.jpg?bwg=1567359413',
+      identifier:5,
+      fullSizePreview: '/assets/5_original.jpg',
+      lowSizePreview: '/assets/5_preview.jpg',
       realWidth: 3863,
       realHeight: 2828,
     },
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/center_sunset.jpg?bwg=1566930551',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/center_sunset.jpg?bwg=1566930551',
+      identifier: 6,
+      fullSizePreview: '/assets/6_original.jpg',
+      lowSizePreview: '/assets/6_preview.jpg',
       realWidth: 3937,
       realHeight: 2929,
     },
     {
-      fullSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/3_(1)_(1)_(1).jpg?bwg=1567868281',
-      lowSizePreview: 'https://andrey.sexy/wp-content/uploads/photo-gallery/3_(1)_(1)_(1).jpg?bwg=1567868281',
+      identifier: 7,
+      fullSizePreview: '/assets/7_original.jpg',
+      lowSizePreview: '/assets/7_preview.jpg',
       realWidth: 3919,
       realHeight: 2911,
     },
 
   ];
+  _perfectHeight = '350';
+
+  title = 'demo';
 
   widthGetterFn = (image) => image.realWidth;
   heightGetterFn = (image) => image.realHeight;
   lowSizePreviewGetter = (image) => image.lowSizePreview;
-
-  title = 'demo';
 }

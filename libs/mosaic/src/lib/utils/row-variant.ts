@@ -3,7 +3,7 @@ import { LayoutConfig } from '../types/layout-config';
 export class RowVariant {
   rowImages: any[];
   remainingImages: any[];
-  childrenCache: any[]
+  childrenCache: any[];
 
   constructor(private allImages: any[], private config: LayoutConfig, sliceIndex?: number) {
     if (sliceIndex !== undefined) {
@@ -35,7 +35,7 @@ export class RowVariant {
       return undefined;
     }
     const minErrorRow = childrenVariants.reduce((acc, variant) => {
-      const currentError = variant.calculateError(this.config.perfectHeight);
+      const currentError = variant.error;
       if (currentError < acc.currentMin) {
         return { currentMin: currentError, currentRow: variant };
       }
@@ -55,8 +55,8 @@ export class RowVariant {
     return this.childrenCache;
   }
 
-  private calculateError(targetHeight: number): number {
-    return Math.abs(this.height - targetHeight) + this.childrenVariants.reduce((acc, cv) => acc + cv.calculateError(targetHeight), 0);
+  get error(): number {
+    return Math.abs(this.height - this.config.perfectHeight);
   }
 
   private createRowVariants(): RowVariant[] {

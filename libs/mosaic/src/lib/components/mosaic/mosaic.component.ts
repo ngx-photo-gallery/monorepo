@@ -67,6 +67,9 @@ export class MosaicComponent implements OnInit, OnChanges {
   @Input()
   lowSizePreviewGetter: (item: any) => any = (image) => image.lowSizePreviewUrl;
 
+  @Input()
+  identifierGetter: (item: any) => any = (image) => image.identifier;
+
   ngOnInit() {
   }
 
@@ -79,4 +82,20 @@ export class MosaicComponent implements OnInit, OnChanges {
     this.rows = generateLayout(this.pictures, this.layoutConfig);
   }
 
+  getStyleForPicture(picutre: any) {
+    const heights = this.rows.map((row) => row[0].height);
+    const currentRowIndex = this.rows.findIndex((row) => row.some((image) => this.identifierGetter(image.data) === this.identifierGetter(picutre)));
+    const currentRow = this.rows[currentRowIndex];
+    const currentItemIndex = currentRow.findIndex((image) => this.identifierGetter(image.data) === this.identifierGetter(picutre));
+    const currentItem = currentRow[currentItemIndex];
+    const marginTop = heights.slice(0, currentRowIndex).reduce((acc, height) => acc + height, 0) + currentRowIndex * this.spaceBetween;
+    const marginLeft = currentRow.slice(0, currentItemIndex).reduce((acc, img) => acc + img.width, 0) + currentItemIndex * this.spaceBetween;
+    return {
+      height: currentItem.height + 'px',
+      width: currentItem.width + 'px',
+      backgroundImage: 'url(\'' + currentItem.url + '\')',
+      marginTop: marginTop + 'px',
+      marginLeft: marginLeft + 'px'
+    };
+  }
 }
