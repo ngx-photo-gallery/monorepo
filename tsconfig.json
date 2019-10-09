@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ngx-photo-gallery/mosaic": ["libs/mosaic/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -120,6 +120,44 @@
           }
         }
       }
+    },
+    "mosaic": {
+      "projectType": "library",
+      "root": "libs/mosaic",
+      "sourceRoot": "libs/mosaic/src",
+      "prefix": "ngx-photo-gallery",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/mosaic/tsconfig.lib.json",
+            "project": "libs/mosaic/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/mosaic/tsconfig.lib.json",
+              "libs/mosaic/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/mosaic/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/mosaic/jest.config.js",
+            "tsConfig": "libs/mosaic/tsconfig.spec.json",
+            "setupFile": "libs/mosaic/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
