@@ -58,7 +58,7 @@ export class MosaicComponent implements OnInit, OnChanges {
   private perfectHeight = 300;
 
   @Output()
-  click = new EventEmitter<any>();
+  imageSelected = new EventEmitter<any>();
 
   /**
    * Getter for image's real width. By default it simply gets 'width' property
@@ -119,7 +119,7 @@ export class MosaicComponent implements OnInit, OnChanges {
   }
 
   handleClick(event: MouseEvent, img: any) {
-    this.click.emit(img);
+    this.imageSelected.emit(img);
     event.stopPropagation();
   }
 }

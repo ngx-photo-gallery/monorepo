@@ -11,7 +11,7 @@
       [spaceBetween]="5"
       [perfectHeight]="perfectHeight"
       [lowSizePreviewGetter]="lowSizePreviewGetter"
-      (click)="handleClick($event)">
+      (imageSelected)="handleClick($event)">
       <ngx-photo-gallery-image-content>
         <ng-template ngxPhotoGalleryImageContentTemplate let-item="item">
           <div class="additional-info">

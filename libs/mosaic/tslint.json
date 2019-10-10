@@ -1,7 +1,6 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "ngxPhotoGallery", "camelCase"],
     "component-selector": [true, "element", "ngx-photo-gallery", "kebab-case"]
   }
 }

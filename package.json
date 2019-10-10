@@ -25,7 +25,9 @@
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "test:ci": "ng test mosaic --watch=false --progress=false",
+    "ci": "concurrently \"npm run lint\" \"npm run test:ci\""
   },
   "private": true,
   "dependencies": {
