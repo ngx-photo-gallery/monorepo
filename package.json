@@ -26,7 +26,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "test:ci": "ng test mosaic --watch=false --progress=false",
+    "test:ci": "ng test mosaic --watch=false --codeCoverage=true",
     "ci": "concurrently \"npm run lint\" \"npm run test:ci\""
   },
   "private": true,
