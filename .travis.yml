@@ -1,0 +1,28 @@
+language: node_js
+
+node_js:
+  - 12
+
+addons:
+  code_climate:
+    repo_token: 1e19616b9594966751808920e1607b533ca5b5d0383f738066e3773b252e3f97
+  apt:
+    packages:
+      - libgconf-2-4
+
+services:
+  - xvfb
+
+before_install:
+  - export NG_CLI_ANALYTICS=ci
+
+install:
+  - npm ci
+  - npm install codeclimate-test-reporter
+  - npm run build
+
+script:
+  - npm run ci
+
+after_script:
+  - codeclimate-test-reporter < coverage/lcov.info
