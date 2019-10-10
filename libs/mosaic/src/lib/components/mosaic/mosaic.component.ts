@@ -53,9 +53,9 @@ export class MosaicComponent implements OnInit, OnChanges {
   @Input()
   maxHeight = 100;
   @HostListener('style.width.px')
-  private rows;
+  rows;
   @Input()
-  private perfectHeight = 300;
+  perfectHeight = 300;
 
   @Output()
   imageSelected = new EventEmitter<any>();
@@ -94,7 +94,7 @@ export class MosaicComponent implements OnInit, OnChanges {
   }
 
   @HostListener('window:resize', ['$event'])
-  private recalculateGallery() {
+  recalculateGallery(event?) {
     this.rows = generateLayout(this.pictures, this.layoutConfig);
     const heights = this.rows.map((row) => row[0].height);
     const totalHeight = heights.reduce((acc, h) => acc + h, 0) + this.rows.length * this.spaceBetween;

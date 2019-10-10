@@ -1,7 +1,19 @@
 {
   "name": "@ngx-photo-gallery/mosaic",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "repository": "https://github.com/ngx-photo-gallery/monorepo",
+  "description": "ngx-photo-gallery mosaic is an Angular photo gallery with flex-like perfect layout",
+  "keywords": [
+    "angular",
+    "javascript",
+    "angular2",
+    "gallery",
+    "photo",
+    "flex"
+  ],
+  "author": "Andrey Bolut <bolut@andrey.sexy>",
+  "license": "MIT",
+  "homepage": "https://gallery.andrey.sexy/",
   "private": false,
   "peerDependencies": {
     "@angular/common": "^8.2.4",

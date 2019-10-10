@@ -1,6 +1,6 @@
 {
   "name": "ngx-photo-gallery",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -27,7 +27,10 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "test:ci": "ng test mosaic --watch=false --codeCoverage=true",
-    "ci": "concurrently \"npm run lint\" \"npm run test:ci\""
+    "ci": "concurrently \"npm run lint\" \"npm run test:ci\"",
+    "build-pkg": "ng build mosaic && npm run copy-files",
+    "copy-files": "cp README.md dist/libs/mosaic/README.md && cp -r docs/ dist/libs/mosaic/docs/",
+    "publish": "npm publish dist/libs/mosaic/"
   },
   "private": true,
   "dependencies": {
