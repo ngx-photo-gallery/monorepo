@@ -11,7 +11,7 @@
 
 ![Gallery screenshot](./docs/screen1.jpg)
 
-#Features
+# Features
 
 * Adding HTML template for display content over images
 * AoT Compilation Support
