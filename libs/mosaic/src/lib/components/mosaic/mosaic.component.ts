@@ -1,16 +1,19 @@
 import {
   Component,
   ContentChild,
-  ElementRef, EventEmitter,
+  ElementRef,
+  EventEmitter,
   HostListener,
   Input,
   OnChanges,
-  OnInit, Output,
-  SimpleChanges, TemplateRef
+  OnInit,
+  Output,
+  SimpleChanges
 } from '@angular/core';
 import { generateLayout } from '../../utils/row-variator';
 import { LayoutConfig } from '../../types/layout-config';
 import { ImageContentDirective } from '../../directives/image-content.directive';
+import { px, url } from '../../utils/style-utils';
 
 @Component({
   selector: 'ngx-photo-gallery-mosaic',
@@ -59,6 +62,9 @@ export class MosaicComponent implements OnInit, OnChanges {
 
   @Output()
   imageSelected = new EventEmitter<any>();
+
+  @Input()
+  editMode = false;
 
   /**
    * Getter for image's real width. By default it simply gets 'width' property
@@ -110,11 +116,11 @@ export class MosaicComponent implements OnInit, OnChanges {
     const marginTop = heights.slice(0, currentRowIndex).reduce((acc, height) => acc + height, 0) + currentRowIndex * this.spaceBetween;
     const marginLeft = currentRow.slice(0, currentItemIndex).reduce((acc, img) => acc + img.width, 0) + currentItemIndex * this.spaceBetween;
     return {
-      height: currentItem.height + 'px',
-      width: currentItem.width + 'px',
-      backgroundImage: 'url(\'' + currentItem.url + '\')',
-      marginTop: marginTop + 'px',
-      marginLeft: marginLeft + 'px'
+      height: px(currentItem.height),
+      width: px(currentItem.width),
+      backgroundImage: url(currentItem.url),
+      marginTop: px(marginTop),
+      marginLeft: px(marginLeft)
     };
   }
 
