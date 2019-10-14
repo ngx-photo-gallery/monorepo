@@ -1,7 +1,13 @@
 import { LayoutConfig } from '../types/layout-config';
 
 export class RowVariant {
+  /**
+   * Images in current row. Access to properties should be performed via getters from layout config.
+   */
   rowImages: any[];
+  /**
+   * Images which waiting for layout
+   */
   remainingImages: any[];
   childrenCache: any[];
 
@@ -22,9 +28,22 @@ export class RowVariant {
       return acc + this.getAspectRatioOfImage(image);
     }, 0);
 
-    return this.widthWithoutSpaces / totalAspectRatio;
+    const calculatedHeight = this.widthWithoutSpaces / totalAspectRatio;
+
+    if (this.isLastRow && calculatedHeight > this.config.maxImageHeight) {
+      const totalWidth = this.rowImages.reduce((acc, image) => acc + this.getAspectRatioOfImage(image) * this.config.perfectHeight, 0);
+      // check below is needed to protect incorrect layout of images when perfect height is too large
+      if (totalWidth > this.widthWithoutSpaces) {
+        return calculatedHeight;
+      }
+      return this.config.perfectHeight;
+    }
+    return calculatedHeight;
   }
 
+  /**
+   * Width of current row minus
+   */
   get widthWithoutSpaces() {
     return this.config.width - (this.rowImages.length - 1) * this.config.spaceBetween;
   }
@@ -103,6 +122,10 @@ export class RowVariant {
 
   private getAspectRatioOfImage(image: any) {
     return this.config.widthGetterFn(image) / this.config.heightGetterFn(image);
+  }
+
+  private get isLastRow() {
+    return !this.remainingImages || this.remainingImages.length === 0;
   }
 }
 
