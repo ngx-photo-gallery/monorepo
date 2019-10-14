@@ -25,16 +25,12 @@ export class MosaicComponent implements OnInit, OnChanges {
   constructor(private el: ElementRef) {
   }
 
-  private get layoutConfig(): LayoutConfig {
-    return {
-      width: this.width,
-      perfectHeight: this.perfectHeight,
-      spaceBetween: this.spaceBetween,
-      heightGetterFn: this.realHeightGetter,
-      widthGetterFn: this.realWidthGetter,
-      lowSizePreviewUrlGetterFn: this.lowSizePreviewGetter
-    };
-  }
+
+  /**
+   * Critical height of an image. Depends only for last row.
+   */
+  @Input()
+  criticalHeight = 500;
 
   private get width(): number {
     return this.el.nativeElement.offsetWidth;
@@ -53,8 +49,18 @@ export class MosaicComponent implements OnInit, OnChanges {
    */
   @Input()
   spaceBetween = 20;
-  @Input()
-  maxHeight = 100;
+
+  private get layoutConfig(): LayoutConfig {
+    return {
+      width: this.width,
+      perfectHeight: this.perfectHeight,
+      spaceBetween: this.spaceBetween,
+      heightGetterFn: this.realHeightGetter,
+      widthGetterFn: this.realWidthGetter,
+      lowSizePreviewUrlGetterFn: this.lowSizePreviewGetter,
+      maxImageHeight: this.criticalHeight
+    };
+  }
   @HostListener('style.width.px')
   rows;
   @Input()

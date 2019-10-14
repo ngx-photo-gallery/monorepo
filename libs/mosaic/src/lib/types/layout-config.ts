@@ -5,4 +5,5 @@ export interface LayoutConfig {
   widthGetterFn: (item: any) => number;
   heightGetterFn: (item: any) => number;
   lowSizePreviewUrlGetterFn: (item: any) => string;
+  maxImageHeight: number;
 }
