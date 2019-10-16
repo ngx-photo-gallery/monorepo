@@ -125,8 +125,7 @@ export class MosaicComponent implements OnInit, OnChanges {
       height: px(currentItem.height),
       width: px(currentItem.width),
       backgroundImage: url(currentItem.url),
-      marginTop: px(marginTop),
-      marginLeft: px(marginLeft)
+      transform: `translate3d(${px(marginLeft)}, ${px(marginTop)}, 0)`
     };
   }
 
